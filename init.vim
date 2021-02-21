@@ -39,3 +39,10 @@ nmap <Leader>vsp :vsp<cr>
 nmap <Leader>hsp :split<cr>
 
 imap jj <Esc>
+
+"-----------Package Manage-------------"
+call plug#begin('~/.config/nvim/bundle')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } 
+call plug#end()
+
+source ~/.config/nvim/defx.vim
