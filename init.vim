@@ -42,7 +42,13 @@ imap jj <Esc>
 
 "-----------Package Manage-------------"
 call plug#begin('~/.config/nvim/bundle')
+  Plug 'itchyny/lightline.vim'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rails'
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } 
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 source ~/.config/nvim/defx.vim
+source ~/.config/nvim/lightline.vim
