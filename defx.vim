@@ -15,6 +15,7 @@ autocmd FileType defx call s:defx_mappings()
 function! s:defx_mappings() abort
   nnoremap <silent><buffer><expr> l     <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
   nnoremap <silent><buffer><expr> .     defx#do_action('toggle_ignored_files')     " 显示隐藏文件
+  nnoremap <silent><buffer><expr> A     defx#do_action('new_file')                 " 新建文件
   nnoremap <silent><buffer><expr> <C-r>  defx#do_action('redraw')
 endfunction
 

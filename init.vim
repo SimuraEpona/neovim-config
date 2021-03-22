@@ -16,6 +16,7 @@ set tabstop=8
 set expandtab
 set softtabstop=2
 set shiftwidth=2
+set colorcolumn=120
 
 "-------------Search--------------"
 set hlsearch                                "Highlight all matched terms.
@@ -46,9 +47,15 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rails'
+  Plug 'dense-analysis/ale'
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } 
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-compe'
 call plug#end()
 
 source ~/.config/nvim/defx.vim
 source ~/.config/nvim/lightline.vim
+source ~/.config/nvim/fzf.vim
+source ~/.config/nvim/futitive.vim
