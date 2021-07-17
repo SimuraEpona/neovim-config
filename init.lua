@@ -12,15 +12,15 @@ require('packer').startup(function()
 
   -- UI to select things (files, grep results, open buffers...)
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
-  use 'joshdick/onedark.vim'         -- Theme inspired by Atom
-  use 'itchyny/lightline.vim'        -- Fancier statusline
   -- Add indentation guides even on blank lines
   use { 'lukas-reineke/indent-blankline.nvim' }
   -- Add git related info in the signs columns and popups
   use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'} }
   use 'neovim/nvim-lspconfig'        -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-compe'           -- Autocompletion plugin
-  use 'shaunsingh/nord.nvim'         -- Theme
+  use 'marko-cerovac/material.nvim'         -- Theme
+  use { 'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
+
 end)
 
 --Incremental live completion
@@ -53,16 +53,6 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn="yes"
 
---Set colorscheme (order is important here)
-vim.o.termguicolors = true
-vim.g.onedark_terminal_italics = 2
-vim.cmd[[colorscheme onedark]]
-
---Set statusbar
-vim.g.lightline = { colorscheme = 'onedark';
-      active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } };
-      component_function = { gitbranch = 'fugitive#head', };
-}
 
 --Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent=true})
@@ -182,7 +172,17 @@ local on_attach = function(_client, bufnr)
 end
 
 -- Theme setup
-require('nord').set()
+require('material').set()
+
+require('lualine').setup {
+  options = {
+    -- ... your lualine config
+    theme = 'material-nvim'
+    -- ... your lualine config
+  }
+}
+
+
 
 nvim_lsp.elixirls.setup {
   on_attach = on_attach;
